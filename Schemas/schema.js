@@ -1,13 +1,14 @@
 module.exports ={
 
+
     userDetail:
+     
                         {
                             username:{
                                 type:String 
                         } ,
                         name:{
-                                type:String , 
-                                required:true 
+                                type:String  
                         } ,
                         email : {
                                 type:String ,
@@ -18,12 +19,14 @@ module.exports ={
                         } ,
                         mobile:{ 
                                 type:Number ,
-                                required:true
                         } ,
                             
                         password: {
                             type:String  
-                        } 
+                        } ,
+                        jwt:{
+                            type:String                                   
+                        }
                 } 
     ,
         contactModel:{

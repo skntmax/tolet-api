@@ -16,11 +16,9 @@ const middleware = ( name , title , next ) =>{
      console.log("req >> ", name, " title >> " , title);      
      next()
 }
- 
-const userModel = require('./database/db')
-app.use(middleware)
+
+app.use(require('./src/user_module/routes'))
 app.use(express.json()) 
-app.use( userModel )
 
 const imageStorage = multer.diskStorage({
      // Destination to store image     
@@ -73,21 +71,22 @@ const videoUpload = multer({
    }
 }) 
 
+
+
+
+
 app.post('/addFile',imageUpload.array('attchment' , 20 ) , (req , res) => {
      console.log("request files  >>>>>>>>"  ,  req.files )
     res.send({status:true , message : "file with data saved "})  
 })
+
+
 
 app.post('/addVideoFile',videoUpload.single('video') , (req , res) => {     
      console.log("request files  >>>>>>>>>>>>>>>>>>>>>>> "  ,  req.files )
     res.send({status:true , message : "file with data saved "})  
   })
 
-
-
-app.get('/' , (req,res)=>{
-    console.log("home page")  
-})
 
 app.get('/post' , (req,res)=>{
      res.send("Post page")     
