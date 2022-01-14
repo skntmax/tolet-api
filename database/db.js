@@ -2,6 +2,8 @@ require('dotenv').config()
 const schema = require('./../Schemas/schema')
 const model = require('./../Models/models' )
 const mongoose = require('mongoose')
+const detaisSchema = require('./../Schemas/detailSchema')
+
  
 mongoose.connect(`mongodb://localhost:27017/${process.env.DATABASE_NAME}` , {
      useNewUrlParser:true , 
@@ -25,12 +27,19 @@ const authoritysModel =
  const genderModel= 
      mongoose.model( model.gender , schema.genderModel)
 
-const typeModel= 
-mongoose.model( model.type, schema.typeModel)
+const typeSingles= 
+     mongoose.model( model.type.single, detaisSchema.single)
+
+     const typeDoubles= 
+     mongoose.model( model.type.double, detaisSchema.double)
+
+     const typebachelors= 
+     mongoose.model( model.type.bachelor, detaisSchema.bachelors)
 
 
 const allModels = {
-     usersDetails , authoritysModel , contactsModel , genderModel , typeModel
+     usersDetails , authoritysModel , 
+     contactsModel , genderModel , typeSingles , typeDoubles ,typebachelors 
 }       
 
 

@@ -7,7 +7,10 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const models = require('./../../database/db') 
 const authenticate = require('./../../authMiddleware/auth')
-const { route } = require('express/lib/application')
+var cookieParser = require('cookie-parser');
+router.use(cookieParser())
+
+
 router.use(express.json())
 router.use(model)
 
@@ -19,6 +22,7 @@ router.post('/signup' ,async (req,res)=>{
              if(result.length==0){
                      const hashPass = await bcrypt.hash(password , 10)
                         const data = new models.usersDetails({
+                             name:name , 
                           username:name+Math.floor(Math.random()*100000) , 
                           email:email ,
                            password:hashPass ,
@@ -81,13 +85,34 @@ router.post('/login' , async (req,res)=>{
 
 })
 
-router.get('/home' ,authenticate,  (req,res)=>{
-      
-      console.log(req.body);
 
+   // -------------------------------- authnticated routes ---------------------------------------------- 
+
+
+   router.get('/home' ,authenticate,  (req,res)=>{
+      try{
+               // console.log("home page  >>> " , req.token , req.currentUser);
+                let data = {
+                      username : req.currentUser.username ,
+                      email:  req.currentUser.email ,
+                      mobile:  req.currentUser.mobile 
+                }
+               res.status(200).send({ 
+                    status:constant.status.success , result:data , message:"logged in succesfully "                                 
+
+               }) 
+  
+      }
+      catch(err){
+          res.send({status:constant.status.failed , result :err  , message:" Unauthorised user  "})
+            
+      }
 
 })
 
+
+
+   // -------------------------------- authnticated routes ---------------------------------------------- 
 
 
 

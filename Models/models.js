@@ -3,6 +3,10 @@ module.exports={
     contact:"contact",
     authority:"authority",
     gender:"gender" ,
-    type:"type"
+    type:{
+         single:'single' ,
+         double:'double' ,
+         bachelor:'bachelor'
+    }
 
 }

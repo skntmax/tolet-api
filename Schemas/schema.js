@@ -1,9 +1,6 @@
 const detaisSchema = require('./detailSchema')
 module.exports ={
-
-
     userDetail:
-     
                         {
                             username:{
                                 type:String 
@@ -28,7 +25,7 @@ module.exports ={
                         jwt:{
                             type:String                                   
                         }
-                } 
+                    } 
     ,
         contactModel:{
                                 phone:{
@@ -55,7 +52,6 @@ module.exports ={
 
                 }
           ,
-           
 
           genderModel :{
                male:{
@@ -79,22 +75,12 @@ module.exports ={
                 detaisSchema.double
             ]           
            } ,
-           bachelors:{
-             type:String ,
-             details:[
-                detaisSchema.bachelors
-            ]                  
-           } ,
             
-          }
-    
+           bachelors:{
+              type:String ,
+              details:[
+                detaisSchema.bachelors
+              ]                  
+            } ,            
+          }    
         } 
-    
-
-    
-    
-
-   
-
-
-
