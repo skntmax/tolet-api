@@ -1,3 +1,4 @@
+const detaisSchema = require('./detailSchema')
 module.exports ={
 
 
@@ -53,7 +54,39 @@ module.exports ={
 
 
                 }
-          
+          ,
+           
+
+          genderModel :{
+               male:{
+                   type:Boolean
+               },
+              female:{
+                type:Boolean                   
+              }  
+          },
+
+          typeModel:{
+            single:{
+                type:String ,
+                details:[
+                    detaisSchema.single
+                ]
+            },
+           double:{
+             type:String    ,
+             details:[
+                detaisSchema.double
+            ]           
+           } ,
+           bachelors:{
+             type:String ,
+             details:[
+                detaisSchema.bachelors
+            ]                  
+           } ,
+            
+          }
     
         } 
     

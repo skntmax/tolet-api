@@ -18,11 +18,24 @@ const usersDetails =
 const contactsModel = 
       mongoose.model(model.contact , schema.contactModel)
 
-const authoritysModel = 
- 
+const authoritysModel =  
      mongoose.model( model.authority , schema.authoritysModel)
-     const allModels = {
-          usersDetails , authoritysModel , contactsModel
-     } 
+
+     
+ const genderModel= 
+     mongoose.model( model.gender , schema.genderModel)
+
+const typeModel= 
+mongoose.model( model.type, schema.typeModel)
+
+
+const allModels = {
+     usersDetails , authoritysModel , contactsModel , genderModel , typeModel
+}       
+
+
+
+
+
       
 module.exports =   allModels
